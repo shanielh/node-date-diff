@@ -1,4 +1,4 @@
-var diff = require('../node-date-diff');
+var diff = require('../lib/main');
 var assert = require('assert');
 
 // This returns a format function that asserts with the given arguments.
@@ -17,7 +17,7 @@ exports.noDiff = function() {
 	
 	var date = new Date(0);
 	
-	diff(assertFormat(1,0,'millisecond'))(date, date);
+	diff.gen(assertFormat(1,0,'millisecond'))(date, date);
 	
 }
 
@@ -26,7 +26,7 @@ exports.millisecondDiff = function() {
 	var firstDate = new Date(1);
 	var secondDate = new Date(0);
 	
-	diff(assertFormat(1, 1, 'millisecond'))(firstDate, secondDate);
+	diff.gen(assertFormat(1, 1, 'millisecond'))(firstDate, secondDate);
 	
 }
 
@@ -35,7 +35,7 @@ exports.beforeSecondDiff = function() {
 	var firstDate = new Date(5);
 	var secondDate = new Date(0);
 	
-	diff(assertFormat(1, 5, 'millisecond'))(firstDate, secondDate);
+	diff.gen(assertFormat(1, 5, 'millisecond'))(firstDate, secondDate);
 	
 }
 
@@ -44,7 +44,7 @@ exports.secondDiff = function() {
 	var firstDate = new Date(1*1000);
 	var secondDate = new Date(0);
 	
-	diff(assertFormat(1, 1, 'second'))(firstDate, secondDate);
+	diff.gen(assertFormat(1, 1, 'second'))(firstDate, secondDate);
 	
 };
 
@@ -53,7 +53,7 @@ exports.beforeMinuteDiff = function() {
 	var firstDate = new Date(5*1000);
 	var secondDate = new Date(0);
 	
-	diff(assertFormat(1, 5, 'second'))(firstDate, secondDate);
+	diff.gen(assertFormat(1, 5, 'second'))(firstDate, secondDate);
 	
 };
 
@@ -62,7 +62,7 @@ exports.minuteDiff = function() {
 	var firstDate = new Date(60*1000);
 	var secondDate = new Date(0);
 	
-	diff(assertFormat(1, 1, 'minute'))(firstDate, secondDate);
+	diff.gen(assertFormat(1, 1, 'minute'))(firstDate, secondDate);
 	
 };
 
@@ -73,7 +73,7 @@ exports.yearDiff = function() {
 	var firstDate = new Date(1000*60*60*24*7*4*12);
 	var secondDate = new Date(0);
 	
-	diff(assertFormat(1, 1, 'year'))(firstDate, secondDate);
+	diff.gen(assertFormat(1, 1, 'year'))(firstDate, secondDate);
 	
 }
 
@@ -82,6 +82,6 @@ exports.moreThenYearDiff = function() {
 	var firstDate = new Date(1000*60*60*24*7*4*12*5);
 	var secondDate = new Date(0);
 	
-	diff(assertFormat(1, 5, 'year'))(firstDate, secondDate);
+	diff.gen(assertFormat(1, 5, 'year'))(firstDate, secondDate);
 	
 }
