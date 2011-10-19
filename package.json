@@ -1,6 +1,6 @@
 {
-    "name" : "node_date_diff",
-    "version" : "0.0.12",
+    "name" : "node-date-diff",
+    "version" : "0.0.14",
     "dependencies" : {
         "underscore" : ""
     },
