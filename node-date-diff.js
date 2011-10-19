@@ -1,3 +1,5 @@
+var _ = require('underscore');
+
 // Setting the times
 var times = { millisecond : 1, second : 1000, minute : 60, hour : 60, day : 24, week : 7, month : 4, year : 12 }
 
@@ -8,6 +10,8 @@ for (var key in times) {
 	times[key] = n;
 }
 
+var firstKey = _.keys(times)[0];
+
 // The output of the module is a function that receives a function to format the output with
 // And returns a function that calculates the diff and formats it using the given function
 module.exports = function(formatFunction) {
@@ -17,7 +21,7 @@ module.exports = function(formatFunction) {
 		// Calculating diff timestamp
 		var diffTimestamp = (firstDate.getTime() - secondDate.getTime());
 		var sign;
-		
+				
 		// Setting sign
 		if (diffTimestamp < 0) {
 			diffTimestamp = -diffTimestamp;
@@ -27,7 +31,7 @@ module.exports = function(formatFunction) {
 		}
 		
 		// Checking for the biggest factor of the timestamp
-		var lastKey;
+		var lastKey = firstKey;
 		for (var key in times) {
 			if (diffTimestamp < times[key]) {			
 				break;
@@ -37,6 +41,7 @@ module.exports = function(formatFunction) {
 		
 		// Calculating and formating.
 		var diffInKey = Math.floor(diffTimestamp / times[lastKey]);
+		
 		return formatFunction(sign, diffInKey, lastKey);
 			
 	};

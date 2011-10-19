@@ -13,6 +13,14 @@ var assertFormat = function(expectedSign, expectedNumber, expectedUnit) {
 	}
 }
 
+exports.noDiff = function() {
+	
+	var date = new Date(0);
+	
+	diff(assertFormat(1,0,'millisecond'))(date, date);
+	
+}
+
 exports.millisecondDiff = function() {
 	
 	var firstDate = new Date(1);
@@ -59,3 +67,21 @@ exports.minuteDiff = function() {
 };
 
 // Need to complete
+
+exports.yearDiff = function() {
+	
+	var firstDate = new Date(1000*60*60*24*7*4*12);
+	var secondDate = new Date(0);
+	
+	diff(assertFormat(1, 1, 'year'))(firstDate, secondDate);
+	
+}
+
+exports.moreThenYearDiff = function() {
+
+	var firstDate = new Date(1000*60*60*24*7*4*12*5);
+	var secondDate = new Date(0);
+	
+	diff(assertFormat(1, 5, 'year'))(firstDate, secondDate);
+	
+}
