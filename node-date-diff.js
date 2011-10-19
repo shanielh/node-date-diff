@@ -1,5 +1,5 @@
 // Setting the times
-var times = { second : 1, minute : 60, hour : 60, day : 24, week : 7, month : 4, year : 12 }
+var times = { millisecond : 1, second : 1000, minute : 60, hour : 60, day : 24, week : 7, month : 4, year : 12 }
 
 // Modifying the object for easier work
 var n = 1;
@@ -15,7 +15,7 @@ module.exports = function(formatFunction) {
 	return function(firstDate, secondDate) {
 		
 		// Calculating diff timestamp
-		var diffTimestamp = (firstDate.getTime() - secondDate.getTime()) / 1000;
+		var diffTimestamp = (firstDate.getTime() - secondDate.getTime());
 		var sign;
 		
 		// Setting sign
