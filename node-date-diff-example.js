@@ -1,3 +1,4 @@
+
 // Generating format and calculation function
 var date_diff = require('node-date-diff');
 
